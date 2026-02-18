@@ -36,7 +36,13 @@ def clean_transactions_data(df):
     ]
     df_cleaned = df_cleaned[df_cleaned['service'].isin(valid_services) |
                            df_cleaned['service'].isna()]
-    
+
+    # Удаление неизвестных городов
+    df_cleaned = df_cleaned[(df_cleaned['city'] != 'Неизвестный город')]
+
+    # Удаление неизвестных способов оплаты
+    df_cleaned = df_cleaned[(df_cleaned['payment_method'] != 'Неизвестно')]
+
     print(f"Очищено {len(df) - len(df_cleaned)} строк транзакций")
     return df_cleaned
 
@@ -74,8 +80,3 @@ def prepare_data():
     print(f"Уникальных клиентов в обеих таблицах: {len(unique_clients)}")
     
     return transactions_cleaned, clients_cleaned
-
-# Запуск подготовки данных
-if __name__ == "__main__":
-    transactions_df, clients_df = prepare_data()
-    print("Подготовка данных завершена")
