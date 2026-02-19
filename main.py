@@ -1,6 +1,7 @@
 from data_cleaning import prepare_data
 from data_analysis import get_analysis_results
 from data_merge import merge_data, analyze_by_capital_levels
+from visualization import create_visualizations
 
 def main():
     print("Запуск тестового задания...")
@@ -18,6 +19,9 @@ def main():
     merged_df = merge_data(transactions_df, clients_df)
     analyze_by_capital_levels(merged_df)
 
+    # 4. Визуализация данных
+    print("\n4. Визуализация данных...")
+    create_visualizations(merged_df)
 
 if __name__ == "__main__":
     main()
