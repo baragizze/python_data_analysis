@@ -2,6 +2,7 @@ from data_cleaning import prepare_data
 from data_analysis import get_analysis_results
 from data_merge import merge_data, analyze_by_capital_levels
 from visualization import create_visualizations
+from forecast import predict_next_month
 
 def main():
     print("Запуск тестового задания...")
@@ -22,6 +23,10 @@ def main():
     # 4. Визуализация данных
     print("\n4. Визуализация данных...")
     create_visualizations(merged_df)
+
+    # 5. Прогнозирование спроса
+    print("\n5. Прогнозирование спроса на следующий месяц...")
+    predict_next_month(transactions_df)
 
 if __name__ == "__main__":
     main()
